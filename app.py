@@ -18,7 +18,7 @@ class ImageProcessingApp(tk.Tk):
     def __init__(self):
         """Инициализация главного окна приложения."""
         super().__init__()
-        self.title("Image Processing App - Вариант 5")
+        self.title("OZPR - работа с изображением")
         self.geometry("1200x800")
         self.configure(bg="#f0f0f0")
 

@@ -10,23 +10,26 @@
 -  Маска по красному цвету
 -  Повышение резкости изображения
 -  Рисование прямоугольников
-```bash
-
-```
 ##  Установка
-
-1. Клонируйте репозиторий:
-```bash
-git clone https://github.com/EgorProx/OznakomitelnayaPractice.git
-cd OznakomitelnayaPractice
+1. Скачайте Python версии 3.8 с сайта
+```download
+Скачайте последнюю версию с официального сайта: 
+https://www.python.org/downloads/release/python-380/
+Выберите "Windows x86-64 executable installer" в самом низу страницы
 ```
-2. Установите зависимости:
-```bash
-pip install -r requirements.txt
+2. Скачайте мой проект в GitHub
+```download
+https://github.com/EgorProx/OznakomitelnayaPractice
+Code -> Download ZIP
 ```
-3. Запуск
+3. Благодаря последовательному выполнению трех команд, реализуйте
+мой проект на вашем компьютере, предварительно зайдя в папку с приложением
+app.py и введя "cmd" в поле пути папки.
+Команды:
 ```bash
-python app.py
+py -3.8 -m pip install --upgrade pip
+py -3.8 -m pip install -r requirements.txt
+py -3.8 app.py
 ```
 ## Структура проекта
 
