@@ -28,7 +28,11 @@ app.py и введя "cmd" в поле пути папки.
 Команды:
 ```bash
 py -3.8 -m pip install --upgrade pip
+```
+```bash
 py -3.8 -m pip install -r requirements.txt
+```
+```bash
 py -3.8 app.py
 ```
 ## Структура проекта
