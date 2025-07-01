@@ -97,7 +97,6 @@ class ImageProcessingApp(tk.Tk):
                 command=self.apply_channel
             ).pack(side=tk.LEFT, padx=5)
 
-        # Операции
         operation_frame = ttk.LabelFrame(
             control_frame, text="Операции обработки", padding=10)
         operation_frame.pack(side=tk.LEFT, padx=10)
@@ -190,7 +189,7 @@ class ImageProcessingApp(tk.Tk):
         self.status_var.set(f"Выбрана операция: {operation}")
 
     def load_image(self):
-        """Загружает изображение из файла с улучшенной обработкой PNG."""
+        """Загружает изображение из файла"""
         file_path = filedialog.askopenfilename(
             filetypes=[("Изображения", "*.jpg *.jpeg *.png")]
         )
@@ -199,16 +198,12 @@ class ImageProcessingApp(tk.Tk):
             return
 
         try:
-            # Сначала пробуем загрузить через Pillow как универсальное решение
             pil_image = Image.open(file_path)
 
-            # Конвертируем в RGB, если изображение в режиме RGBA (с альфа-каналом)
             if pil_image.mode == 'RGBA':
                 background = Image.new('RGB', pil_image.size, (255, 255, 255))
                 background.paste(pil_image, mask=pil_image.split()[3])
                 pil_image = background
-
-            # Конвертируем в numpy array и затем в BGR для OpenCV
             image = cv2.cvtColor(np.array(pil_image), cv2.COLOR_RGB2BGR)
 
             self.original_image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
@@ -349,9 +344,9 @@ class ImageProcessingApp(tk.Tk):
         self.show_image()
 
     def apply_red_mask(self, threshold):
-        # Конвертируем оригинал в RGB
+        """Маска по красному"""
         rgb = cv2.cvtColor(self.original_image, cv2.COLOR_BGR2RGB)
-        r, g, b = cv2.split(rgb)  # Теперь порядок RGB!
+        r, g, b = cv2.split(rgb)
 
         mask = (r > threshold).astype(np.uint8) * 255
         self.current_image = cv2.merge([mask, np.zeros_like(g), np.zeros_like(b)])
@@ -372,7 +367,7 @@ class ImageProcessingApp(tk.Tk):
         """
         img = self.original_image.copy()
         cv2.rectangle(img, (x1, y1), (x2, y2),
-                      (0, 0, 255), 2)  # Синий цвет в RGB
+                      (0, 0, 255), 2)
         self.current_image = img
 
 
